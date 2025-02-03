@@ -492,7 +492,7 @@
         <div class="last-update">
             <div>
                 <div class="last-update-text">Ostatnia aktualizacja</div>
-                <div class="last-update-date">10.12.2024</div>
+                <div class="last-update-date" id="lastUpdate"></div>
             </div>
             <button id="aktualizuj">Aktualizuj</button>
         </div>
@@ -505,6 +505,16 @@
     </div>
 
     <script>
+         function updateDate() {
+        let today = new Date();
+        let formattedDate = today.toLocaleDateString("pl-PL");
+        document.getElementById("lastUpdate").textContent = formattedDate;
+    }
+    
+    document.getElementById("aktualizuj").addEventListener("click", updateDate);
+    
+    window.onload = updateDate;
+        
         function updateTime() {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
